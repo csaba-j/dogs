@@ -35,6 +35,17 @@ class DogController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'life_span' => 'required',
+            'name' => 'required|unique:dogs',
+            'origin' => 'required',
+            'reference_image_id' => 'required',
+            'temperament' => 'required',
+            'weight_imperial' => 'required',
+            'wikipedia_url' => 'required',
+        ]);
+
+
         Dog::create([
             'alt_names' => $request->get('alt_names'),
             'experimental' => $request->get('experimental') == "on" ? 1 : 0,

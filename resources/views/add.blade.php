@@ -33,7 +33,7 @@
                                 <input type="checkbox" name="hypoallergenic" id="hypoallergenic">
                             </div>
                             <div class="input">
-                                <label for="life_span" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lifespan (eg. 12-14)</label>
+                                <label for="life_span" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" required>Lifespan (eg. 12-14)</label>
                                 <input type="text" name="life_span" id="life_span">
                             </div>
                             <div class="input">
@@ -41,7 +41,7 @@
                                 <input type="checkbox" name="natural" id="natural">
                             </div>
                             <div class="input">
-                                <label for="origin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Origin</label>
+                                <label for="origin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" required>Origin</label>
                                 <input type="text" name="origin" id="origin">
                             </div>
                             <div class="input">
@@ -61,19 +61,28 @@
                                 <input type="checkbox" name="suppressed_tail" id="suppressed_tail">
                             </div>
                             <div class="input">
-                                <label for="temperament" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Temperament</label>
+                                <label for="temperament" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" required>Temperament</label>
                                 <input type="text" name="temperament" id="temperament">
                             </div>
                             <div class="input">
-                                <label for="weight_imperial" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Weight (eg. 12-14)</label>
+                                <label for="weight_imperial" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" required>Weight (eg. 12-14)</label>
                                 <input type="text" name="weight_imperial" id="weight_imperial">
                             </div>
                             <div class="input">
-                                <label for="wikipedia_url" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Wikipedia URL</label>
+                                <label for="wikipedia_url" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" required>Wikipedia URL</label>
                                 <input type="text" name="wikipedia_url" id="wikipedia_url">
                             </div>
                         </div>
                         <button type="submit" class="text-black bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                     </form>
                 </div>
             </div>
