@@ -16,7 +16,7 @@ class CreateDogsTable extends Migration
         Schema::create('dogs', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('alt_names');
+            $table->string('alt_names')->nullable();
             $table->boolean('experimental');
             $table->boolean('hairless');
             $table->boolean('hypoallergenic');
