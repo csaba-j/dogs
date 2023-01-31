@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,7 @@ Route::get('/dashboard', function () {
 Route::get('/add', function () {
     return view('add');
 })->middleware(['auth'])->name('add');
+
+Route::post('add-dog', [DogController::class, 'store']);
 
 require __DIR__.'/auth.php';
