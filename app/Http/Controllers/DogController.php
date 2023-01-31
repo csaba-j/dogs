@@ -39,7 +39,6 @@ class DogController extends Controller
             'life_span' => 'required',
             'name' => 'required|unique:dogs',
             'origin' => 'required',
-            'reference_image_id' => 'required',
             'temperament' => 'required',
             'weight_imperial' => 'required',
             'wikipedia_url' => 'required',
