@@ -19,6 +19,7 @@ class AdminSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => 'admin123123', // password
             'remember_token' => Str::random(10),
+            'is_admin' => true
         ]);
     }
 }
