@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white dark:bg-slate-800 border-b border-gray-200" >
                     Fields marked with an asterisk (*) must be filled out.
-                    <form action="{{url('add-dog')}}" method="POST">
+                    <form action="{{url('add-dog')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                         <div class="grid gap-6 mb-6 md:grid-cols-2">
                             <div class="input">
@@ -72,6 +72,10 @@
                             <div class="input">
                                 <label for="wikipedia_url" class="block mb-2 text-sm font-medium text-gray-900" required>Wikipedia URL*</label>
                                 <input type="text" name="wikipedia_url" id="wikipedia_url" value="{{ old('wikipedia_url') }}">
+                            </div>
+                            <div class="input">
+                                <label for="image" class="block mb-2 text-sm font-medium text-gray-900" required>Image (optional)</label>
+                                <input type="file" name="image" id="image" value="{{ old('image') }}">
                             </div>
                         </div>
                         <button type="submit" class="text-black bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>

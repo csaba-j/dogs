@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Dog;
+use Illuminate\Support\Facades\Session;
+
 
 class DogController extends Controller
 {
@@ -42,10 +45,11 @@ class DogController extends Controller
             'temperament' => 'required',
             'weight_imperial' => 'required',
             'wikipedia_url' => 'required',
+            'image' => 'mimes:jpg,bmp,png,jpeg|max:3500'
         ]);
 
 
-        Dog::create([
+        $dog = Dog::create([
             'alt_names' => $request->get('alt_names'),
             'experimental' => $request->get('experimental') == "on" ? 1 : 0,
             'hairless' => $request->get('hairless') == "on" ? 1 : 0,
@@ -63,6 +67,11 @@ class DogController extends Controller
             'weight_imperial' => $request->get('weight_imperial'),
             'wikipedia_url' => $request->get('wikipedia_url'),
         ]);
+
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+            $image = $request->file('image');
+            $path = Storage::putFileAs('public', $image, $dog->id.'.'.$image->getClientOriginalExtension());
+        }
 
         return redirect('dashboard');
     }
