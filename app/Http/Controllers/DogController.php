@@ -17,7 +17,9 @@ class DogController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard', [
+            'dogs' => Dog::paginate(10)
+        ]);
     }
 
     /**
@@ -59,7 +61,7 @@ class DogController extends Controller
             'name' => $request->get('name'),
             'origin' => $request->get('origin'),
             'rare' => $request->get('rare') == "on" ? 1 : 0,
-            'reference_image_id' => $request->get('reference_image_id'),
+            'reference_image_name' => null,
             'rex' => $request->get('rex') == "on" ? 1 : 0,
             'short_legs' => $request->get('short_legs') == "on" ? 1 : 0,
             'suppressed_tail' => $request->get('suppressed_tail') == "on" ? 1 : 0,
@@ -71,6 +73,8 @@ class DogController extends Controller
         if($request->hasFile('image') && $request->file('image')->isValid()){
             $image = $request->file('image');
             $path = Storage::putFileAs('public', $image, $dog->id.'.'.$image->getClientOriginalExtension());
+            $dog->reference_image_name = $dog->id.'.'.$image->getClientOriginalExtension();
+            $dog->save();
         }
 
         Session::flash('message', "Successfully added ".$dog->name." to database.");
