@@ -9,15 +9,16 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white dark:bg-slate-800 border-b border-gray-200" >
+                    Fields marked with an asterisk (*) must be filled out.
                     <form action="{{url('add-dog')}}" method="POST">
                     @csrf
                         <div class="grid gap-6 mb-6 md:grid-cols-2">
                             <div class="input">
-                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Name</label>
+                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Name*</label>
                                 <input type="text" name="name" id="name" value="{{ old('name') }}">
                             </div>
                             <div class="input">
-                                <label for="alt_names" class="block mb-2 text-sm font-medium text-gray-900">Alternative names</label>
+                                <label for="alt_names" class="block mb-2 text-sm font-medium text-gray-900">Alternative names (optional)</label>
                                 <input type="text" name="alt_names" id="alt_names" value="{{ old('alt_names') }}">
                             </div>
                             <div class="input">
@@ -33,7 +34,7 @@
                                 <input type="checkbox" name="hypoallergenic" id="hypoallergenic" {{ old('hypoallergenic') == 'on' ? 'checked' : '' }}>
                             </div>
                             <div class="input">
-                                <label for="life_span" class="block mb-2 text-sm font-medium text-gray-900" required>Lifespan (eg. 12-14)</label>
+                                <label for="life_span" class="block mb-2 text-sm font-medium text-gray-900" required>Lifespan (eg. 12-14)*</label>
                                 <input type="text" name="life_span" id="life_span" value="{{ old('life_span') }}">
                             </div>
                             <div class="input">
@@ -41,7 +42,7 @@
                                 <input type="checkbox" name="natural" id="natural" {{ old('natural') == 'on' ? 'checked' : '' }}>
                             </div>
                             <div class="input">
-                                <label for="origin" class="block mb-2 text-sm font-medium text-gray-900" required>Origin</label>
+                                <label for="origin" class="block mb-2 text-sm font-medium text-gray-900" required>Origin*</label>
                                 <input type="text" name="origin" id="origin" value="{{ old('origin') }}">
                             </div>
                             <div class="input">
@@ -61,15 +62,15 @@
                                 <input type="checkbox" name="suppressed_tail" id="suppressed_tail" {{ old('suppressed_tail') == 'on' ? 'checked' : '' }}>
                             </div>
                             <div class="input">
-                                <label for="temperament" class="block mb-2 text-sm font-medium text-gray-900" required>Temperament</label>
+                                <label for="temperament" class="block mb-2 text-sm font-medium text-gray-900" required>Temperament*</label>
                                 <input type="text" name="temperament" id="temperament" value="{{ old('temperament') }}">
                             </div>
                             <div class="input">
-                                <label for="weight_imperial" class="block mb-2 text-sm font-medium text-gray-900" required>Weight (eg. 12-14)</label>
+                                <label for="weight_imperial" class="block mb-2 text-sm font-medium text-gray-900" required>Weight (eg. 12-14)*</label>
                                 <input type="text" name="weight_imperial" id="weight_imperial" value="{{ old('weight_imperial') }}">
                             </div>
                             <div class="input">
-                                <label for="wikipedia_url" class="block mb-2 text-sm font-medium text-gray-900" required>Wikipedia URL</label>
+                                <label for="wikipedia_url" class="block mb-2 text-sm font-medium text-gray-900" required>Wikipedia URL*</label>
                                 <input type="text" name="wikipedia_url" id="wikipedia_url" value="{{ old('wikipedia_url') }}">
                             </div>
                         </div>
