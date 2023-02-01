@@ -73,7 +73,9 @@ class DogController extends Controller
             $path = Storage::putFileAs('public', $image, $dog->id.'.'.$image->getClientOriginalExtension());
         }
 
-        return redirect('dashboard');
+        Session::flash('message', "Successfully added ".$dog->name." to database.");
+
+        return redirect('add');
     }
 
     /**
