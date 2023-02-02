@@ -65,6 +65,7 @@
                             </a>
                             @endforeach
                         </div>
+                        {{ $dogs->links() }}
 
                         <!-- More products... -->
                     </div>
