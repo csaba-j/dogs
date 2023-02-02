@@ -14,9 +14,7 @@ use App\Http\Controllers\DogController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [DogController::class, 'index'])->name('welcome');
 
 Route::get('/dashboard', [DogController::class, 'index'])->middleware(['auth'])->name('dashboard');
 

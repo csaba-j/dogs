@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Dog;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class DogController extends Controller
@@ -17,9 +19,16 @@ class DogController extends Controller
      */
     public function index()
     {
-        return view('dashboard', [
-            'dogs' => Dog::paginate(10)
-        ]);
+        if (Auth::check()) {
+            return view('dashboard', [
+                'dogs' => Dog::paginate(10)
+            ]);
+        } else {
+            return view('welcome', [
+                'dogs' => Dog::paginate(10)
+            ]);
+        }
+
     }
 
     /**
