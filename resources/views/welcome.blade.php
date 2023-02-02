@@ -54,6 +54,18 @@
                 <!--    Listing    -->
                 <div class="bg-white">
                     <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+                        <form method="get" action="{{url('search')}}">
+                        @csrf
+                        <div class="grid gap-6 mb-6 md:grid-cols-2">
+                                <div class="input">
+                                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Name*</label>
+                                    <input type="text" name="name" id="name" value="{{ old('name') }}">
+                                </div>
+                                    <button>Click to filter</button>
+                        </div>
+                        </form>
+
+
                         <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                             @foreach($dogs as $dog)
                             <a href="{{$dog->wikipedia_url}}" class="group">

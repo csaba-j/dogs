@@ -19,7 +19,7 @@ class DogController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
+        if (Auth::check()) {            
             return view('dashboard', [
                 'dogs' => Dog::paginate(10)
             ]);
@@ -29,6 +29,27 @@ class DogController extends Controller
             ]);
         }
 
+    }
+
+    public function search(Request $request) {
+        $filter = $request->query('name');
+
+        if (!empty($filter)) {
+            $dogs = Dog::where('name', 'like', '%'.$filter.'%')
+                ->paginate(10);
+        } else {
+            $dogs = Dog::paginate(10);
+        }
+
+        if (Auth::check()) {            
+            return view('dashboard', [
+                'dogs' => $dogs
+            ]);
+        } else {
+            return view('welcome', [
+                'dogs' => $dogs
+            ]);
+        }
     }
 
     /**

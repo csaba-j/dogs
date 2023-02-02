@@ -18,6 +18,10 @@ Route::get('/', [DogController::class, 'index'])->name('welcome');
 
 Route::get('/dashboard', [DogController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
+Route::get('/search', [DogController::class, 'search'])->name('welcome');
+
+Route::get('/dashboard/search', [DogController::class, 'search'])->middleware(['auth'])->name('dashboard');
+
 Route::get('/add', function () {
     return view('add');
 })->middleware(['auth'])->name('add');
