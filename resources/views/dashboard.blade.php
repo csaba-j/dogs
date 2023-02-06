@@ -30,13 +30,17 @@
 
                         <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                             @foreach($dogs as $dog)
-                            <a href="{{$dog->wikipedia_url}}" class="group">
-                                <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-                                    <img src="{{ $dog->reference_image_name != null ? asset('storage/'.$dog->reference_image_name) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png'  }}" alt="A cute dog." class="h-full w-full object-cover object-center group-hover:opacity-75">
-                                </div>
-                                <h3 class="mt-4 text-sm text-gray-700">{{$dog->temperament}}</h3>
-                                <p class="mt-1 text-lg font-medium text-gray-900">{{$dog->name}}</p>
-                            </a>
+                            <div class="relative">
+                                <a href="{{$dog->wikipedia_url}}" class="group">
+                                    <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+                                        <img src="{{ $dog->reference_image_name != null ? asset('storage/'.$dog->reference_image_name) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png'  }}"alt="A cute dog." class="h-full w-full object-cover object-center group-hover:opacity-75">
+                                    </div>
+                                    <h3 class="mt-4 text-sm text-gray-700">{{$dog->temperament}}</h3>
+                                    <p class="mt-1 text-lg font-medium text-gray-900">{{$dog->name}}</p>
+                                </a>
+                                <button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full"><a href="{{ url('edit/'.$dog->id) }}">Edit</a></button>
+                            </div>
+
                             @endforeach
                         </div>
                         {{ $dogs->links() }}
