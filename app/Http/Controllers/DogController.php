@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Dog;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 
 
@@ -131,7 +133,11 @@ class DogController extends Controller
      */
     public function edit($id)
     {
-        //
+        $dog = Dog::where('id', $id)
+            ->first();
+        return view('edit', [
+            'dog' => $dog
+        ]);
     }
 
     /**
@@ -143,7 +149,57 @@ class DogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dog = Dog::where('id', $id)->first();
+
+        Validator::make($request->except('_token'), [
+            'name' => [
+                'required',
+                Rule::unique('dogs')->ignore($dog->id),
+            ],
+            'life_span' => 'required',
+            'name' => 'required|unique:dogs',
+            'origin' => 'required',
+            'temperament' => 'required',
+            'weight_imperial' => 'required',
+            'wikipedia_url' => 'required',
+            'image' => 'mimes:jpg,bmp,png,jpeg|max:3500'
+        ]);
+
+        Dog::where('id', $id)
+            ->update([
+                'alt_names' => $request->get('alt_names'),
+                'experimental' => $request->get('experimental') == "on" ? 1 : 0,
+                'hairless' => $request->get('hairless') == "on" ? 1 : 0,
+                'hypoallergenic' => $request->get('hypoallergenic') == "on" ? 1 : 0,
+                'life_span' => $request->get('life_span'),
+                'natural' => $request->get('natural') == "on" ? 1 : 0,
+                'name' => $request->get('name'),
+                'origin' => $request->get('origin'),
+                'rare' => $request->get('rare') == "on" ? 1 : 0,
+                'rex' => $request->get('rex') == "on" ? 1 : 0,
+                'short_legs' => $request->get('short_legs') == "on" ? 1 : 0,
+                'suppressed_tail' => $request->get('suppressed_tail') == "on" ? 1 : 0,
+                'temperament' => $request->get('temperament'),
+                'weight_imperial' => $request->get('weight_imperial'),
+                'wikipedia_url' => $request->get('wikipedia_url'),
+            ]);
+
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+            $image = $request->file('image');
+            $exists = Storage::disk('public')->exists($dog->reference_image_name);
+            if($exists) {
+                Storage::disk('public')->delete($dog->reference_image_name);
+            }
+            $path = Storage::putFileAs('public', $image, $dog->id.'.'.$image->getClientOriginalExtension());
+            Dog::where('id', $id)
+            ->update([
+                'reference_image_name' => $dog->id.'.'.$image->getClientOriginalExtension(),
+            ]);
+        }
+
+
+            return redirect('dashboard');
+
     }
 
     /**
