@@ -40,8 +40,8 @@
                                     <h3 class="mt-4 text-sm text-gray-700">{{$dog->temperament}}</h3>
                                     <p class="mt-1 text-lg font-medium text-gray-900">{{$dog->name}}</p>
                                 </a>
-                                <button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full"><a href="{{ url('edit/'.$dog->id) }}">Edit</a></button>
-                                <button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full"><a href="{{ url('confirm_delete/'.$dog->id) }}">Delete</a></button>
+                                <a href="{{ url('edit/'.$dog->id) }}"><button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full">Edit</button></a>
+                                <a href="{{ url('confirm_delete/'.$dog->id) }}"><button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full">Delete</button></a>
                             </div>
 
                             @endforeach
