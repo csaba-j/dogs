@@ -202,6 +202,14 @@ class DogController extends Controller
 
     }
 
+    public function confirmDelete(Request $request, $id) {
+        $dog = Dog::where('id', $id)->first();
+
+        return view('confirm_delete', [
+            'dog' => $dog
+        ]);    
+    }
+
     /**
      * Remove the specified resource from storage.
      *
