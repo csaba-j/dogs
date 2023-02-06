@@ -197,8 +197,9 @@ class DogController extends Controller
             ]);
         }
 
+        Session::flash('message', "Successfully edited ".$dog->name.".");
 
-            return redirect('dashboard');
+        return redirect('dashboard');
 
     }
 
