@@ -41,6 +41,7 @@
                                     <p class="mt-1 text-lg font-medium text-gray-900">{{$dog->name}}</p>
                                 </a>
                                 <button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full"><a href="{{ url('edit/'.$dog->id) }}">Edit</a></button>
+                                <button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full"><a href="{{ url('confirm_delete/'.$dog->id) }}">Delete</a></button>
                             </div>
 
                             @endforeach

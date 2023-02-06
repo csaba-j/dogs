@@ -202,6 +202,14 @@ class DogController extends Controller
 
     }
 
+    public function confirmDelete(Request $request, $id) {
+        $dog = Dog::where('id', $id)->first();
+
+        return view('confirm_delete', [
+            'dog' => $dog
+        ]);    
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -210,6 +218,21 @@ class DogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dog = Dog::where('id', $id)->first();
+
+        $deleted_name = $dog->name;
+
+        if($dog->reference_image_name){
+            $exists = Storage::disk('public')->exists($dog->reference_image_name);
+            if($exists) {
+                Storage::disk('public')->delete($dog->reference_image_name);
+            }
+        }
+
+        $dog->delete();
+
+        Session::flash('message', "Successfully deleted ".$deleted_name." from database.");
+
+        return redirect('dashboard');
     }
 }

@@ -32,6 +32,11 @@ Route::post('update/{id}', [DogController::class, 'update']);
 
 Route::get('/edit/{id}', [DogController::class, 'edit'])->middleware(['auth'])->name('edit');
 
+Route::get('/confirm_delete/{id}', [DogController::class, 'confirmDelete'])->middleware(['auth'])->name('confirmDelete');
+
+Route::get('/delete/{id}', [DogController::class, 'destroy'])->middleware(['auth']);
+
+
 
 
 require __DIR__.'/auth.php';
