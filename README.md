@@ -12,6 +12,11 @@
 #### Also, to demonstrate my skills as a Laravel developer.
 ##### More description will be added later.
 
+## To successfully display every element on the website, run the commands:
+### npm install
+### npm run dev
+## On the server's CLI.
+
 
 ## About Laravel
 
