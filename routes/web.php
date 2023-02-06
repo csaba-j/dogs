@@ -28,4 +28,10 @@ Route::get('/add', function () {
 
 Route::post('add-dog', [DogController::class, 'store']);
 
+Route::post('update/{id}', [DogController::class, 'update']);
+
+Route::get('/edit/{id}', [DogController::class, 'edit'])->middleware(['auth'])->name('edit');
+
+
+
 require __DIR__.'/auth.php';
