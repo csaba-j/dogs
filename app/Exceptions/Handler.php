@@ -4,9 +4,22 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Illuminate\Support\Facades\Session;
+
 
 class Handler extends ExceptionHandler
 {
+        /**
+     * A list of exception types with their corresponding custom log levels.
+     *
+     * @var array<class-string<\Throwable>, \Psr\Log\LogLevel::*>
+     */
+    protected $levels = [
+        //
+    ];
+
+
+
     /**
      * A list of the exception types that are not reported.
      *
@@ -38,4 +51,14 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    public function render($request, Throwable $e)
+{
+        $error = $e->getMessage();
+
+
+        Session::flash('error', 'An error occured. Message: '.$error);
+
+        return parent::render($request, $e);
+}
 }
