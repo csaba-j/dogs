@@ -39,6 +39,14 @@
 
                     <x-slot name="content">
                         <!-- Authentication -->
+                        <form method="POST" action="{{ url('tokens/create') }}">
+                            @csrf
+                            <x-dropdown-link :href="url('tokens/create')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Create personal API token') }}
+                            </x-dropdown-link>
+                        </form>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
