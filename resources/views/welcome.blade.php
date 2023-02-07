@@ -70,8 +70,13 @@
                             @foreach($dogs as $dog)
                             <a href="{{$dog->wikipedia_url}}" class="group">
                                 <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-                                    <img src="{{ $dog->reference_image_name != null ? asset('storage/'.$dog->reference_image_name) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png'  }}" alt="A cute dog." class="h-full w-full object-cover object-center group-hover:opacity-75">
-                                </div>
+                                        @if($dog->reference_image_url != null)
+                                            <img src="{{ $dog->reference_image_url }}"alt="A cute dog." class="h-full w-full object-cover object-center group-hover:opacity-75">
+                                        @elseif($dog->reference_image_name != null)
+                                            <img src="{{ asset('storage/'.$dog->reference_image_name) }}" alt="A cute dog." class="h-full w-full object-cover object-center group-hover:opacity-75">
+                                        @else
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png"alt="A cute dog." class="h-full w-full object-cover object-center group-hover:opacity-75">
+                                        @endif                                </div>
                                 <h3 class="mt-4 text-sm text-gray-700">{{$dog->temperament}}</h3>
                                 <p class="mt-1 text-lg font-medium text-gray-900">{{$dog->name}}</p>
                             </a>
