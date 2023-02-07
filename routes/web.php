@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DogController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,7 @@ Route::get('/confirm_delete/{id}', [DogController::class, 'confirmDelete'])->mid
 
 Route::get('/delete/{id}', [DogController::class, 'destroy'])->middleware(['auth']);
 
+Route::post('tokens/create', [UserController::class, 'createApiToken'])->middleware(['auth']);
 
 
 
