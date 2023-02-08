@@ -47,4 +47,28 @@ class Dog extends Model
         'is_admin' => 'boolean',
         'image' => 'array'
     ];
+
+    /**
+     * Scope a query to search by name.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  string  $name
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeName($query, $name)
+    {
+        return $query->where('name', 'like', '%'.$name.'%');
+    }
+
+    /**
+     * Scope a query to search by temperament.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  string $temperament
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeTemperament($query, $temperament)
+    {
+        return $query->where('temperament', 'like', '%'.$temperament.'%');
+    }
 }
