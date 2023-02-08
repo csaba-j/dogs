@@ -21,6 +21,7 @@ class Dog extends Model
         'rare',
         'image',
         'reference_image_id',
+        'reference_image_name',
         'rex',
         'short_legs',
         'suppressed_tail',
