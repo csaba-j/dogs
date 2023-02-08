@@ -94,7 +94,7 @@ class DogController extends Controller
             $image = $request->file('image');
             $image_name = $dog->id . '.' . $image->getClientOriginalExtension();
             $path = Storage::putFileAs('public', $image, $image_name);
-            $img_url = url(secure_asset('storage/'.$image_name));
+            $img_url = url(asset('storage/'.$image_name));
             $dog->image = [
                 'url' => $img_url
             ];
@@ -185,7 +185,7 @@ class DogController extends Controller
                 Storage::disk('public')->delete($dog->reference_image_name);
             }
             $path = Storage::putFileAs('public', $image, $image_name);
-            $img_url = url(secure_asset('storage/' .$image_name));
+            $img_url = url(asset('storage/' .$image_name));
             $dog = Dog::where('id', $id)
                 ->first();
             $dog->image = [

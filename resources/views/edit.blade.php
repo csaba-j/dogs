@@ -84,7 +84,7 @@
                                 Current image:
                                 @if ($dog->reference_image_name != null)
                                 <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-                                    <img src="{{secure_asset('storage/'.$dog->reference_image_name)}}" class="h-full w-full object-cover object-center">
+                                    <img src="{{asset('storage/'.$dog->reference_image_name)}}" class="h-full w-full object-cover object-center">
                                 </div>
                                 @else
                                     No image!
