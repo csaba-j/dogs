@@ -1,0 +1,190 @@
+openapi: 3.1.0
+info:
+  version: 0.7.0.
+  title: OpenAPI 3.0 DogListing
+paths:
+  /dogs:
+    get:
+      summary: List all dogs in database
+      description: Returns all dog objects from the database in JSON format
+      parameters:
+        - name: api_token
+        in: query/header
+        description: Authenticator token for the API
+        required: true
+        - name: page_size
+        in: query
+        description: The amount of dogs to show per page
+        required: false
+      operationId: index
+      responses:
+        '200':
+          description: A paged JSON of dogs
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/data"
+  /dogs/search:
+    get:
+      summary: Searches dogs by name
+      description: Returns an array of filtered dogs matching the named query
+      parameters:
+        - name: api_token
+        in: query/header
+        description: Authenticator token for the API
+        required: true
+        - name: page_size
+        in: query
+        description: The amount of dogs to show per page
+        required: false
+        - name: name
+        description: The query parameter (name) for the filter
+        required: false
+      operationId: search
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/data"
+components:
+  schemas:
+    id:
+      type: int
+      description: ID of the dog object
+    name:
+      type: string
+      description: Name of the dog breed
+      example: "Husky"
+    alt_names:
+      type: string
+      description: Alternative names for the breed
+      example: "Vizsla"
+    experimental:
+      type: boolean
+      description: The breed is used for experimental purposes
+    hairless:
+      type: boolean
+      description: The breed is hairless
+    hypoallergenic:
+      type: boolean
+      description: The breed is hypoallergenic
+    life_span:
+      type: string
+      description: The breed's average lifespan
+      example: "12-15 years"
+    natural:
+      type: boolean
+      description: The breed developed by natural adaptation and changes.
+    origin:
+      type: string
+      description: The breed's country/place of origin
+      example: "Germany"
+    rare:
+      type: boolean
+      description: The breed is rare
+    image:
+      type: array
+      description: The properties of the associated image of the breed
+      maxItems: 4
+      items:
+        id:
+          type: string
+          description: The breed's ID assigned by The DogAPI (www.thedogapi.com)
+          example: "H1zSie9V7"
+        width:
+          type: int
+          description: The width of the image in pixels, assigned by The DogAPI (www.thedogapi.com)
+        height:
+          type: int
+          description: The height of the image in pixels, assigned by The DogAPI (www.thedogapi.com)
+        url:
+          type: string
+          description: The image's public URL
+          example: "https:\/\/cdn2.thedogapi.com\/images\/H1zSie9V7.jpg"
+    reference_image_id:
+      type: string
+      description: The associated image's ID, assigned by The DogAPI (www.thedogapi.com)
+      example: "H1zSie9V7"
+    reference_image_name:
+      type: string
+      description: The name of the image stored in the database, with extension
+      example: "34.jpg"
+    rex:
+      type: boolean
+      description: The breed is of rex type
+    short_legs:
+      type: boolean
+      description: The breed is short-legged
+    suppressed_tail:
+      type: boolean
+      description: The breed has a suppressed tail
+    temperament:
+      type: string
+      description: The average temperament of the breed
+      example: "Reliable, Fearless, Bold, Energetic"
+    weight_imperial:
+      type: string
+      description: The imperial average weight of the breed in pounds
+      example: "14 - 15 pounds"
+    wikipedia_url:
+      type: string
+      description: The breed's official Wikipedia page URL
+    created_at:
+      type: datetime
+      description: The creation time of the dog object
+      example: "2023-02-08T13:50:02.000000Z"
+    updated_at:
+      type: datetime
+      description: The last update's time of the dog object
+      example: "2023-02-08T13:50:02.000000Z"
+    data:
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/id"
+        name:
+          $ref: "#/components/schemas/name"
+        alt_names:
+          $ref: "#/components/schemas/alt_names"
+        experimental:
+          $ref: "#/components/schemas/experimental"
+        hairless:
+          $ref: "#/components/schemas/hairless"
+        hypoallergenic:
+          $ref: "#/components/schemas/hypoallergenic"
+        life_span:
+          $ref: "#/components/schemas/life_span"
+        natural:
+          $ref: "#/components/schemas/natural"
+        origin:
+          $ref: "#/components/schemas/origin"
+        rare:
+          $ref: "#/components/schemas/rare"
+        image:
+          $ref: "#/components/schemas/image"
+        reference_image_id:
+          $ref: "#/components/schemas/reference_image_id"
+        reference_image_name:
+          $ref: "#/components/schemas/reference_image_name"
+        rex:
+          $ref: "#/components/schemas/rex"
+        short_legs:
+          $ref: "#/components/schemas/short_legs"
+        suppressed_tail:
+          $ref: "#/components/schemas/suppressed_tail"
+        temperament:
+          $ref: "#/components/schemas/temperament"
+        weight_imperial:
+          $ref: "#/components/schemas/weight_imperial"
+        wikipedia_url:
+          $ref: "#/components/schemas/wikipedia_url"
+        created_at:
+          $ref: "#/components/schemas/created_at"
+        updated_at:
+          $ref: "#/components/schemas/updated_at"
+
+        
+        
+        
