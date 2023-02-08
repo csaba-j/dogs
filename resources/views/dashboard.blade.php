@@ -41,11 +41,12 @@
                                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png"alt="A cute dog." class="h-full w-full object-cover object-center group-hover:opacity-75">
                                         @endif
                                     </div>
-                                    <h3 class="mt-4 text-sm text-gray-700">{{$dog->temperament}}</h3>
+                                    <h3 class="mt-4 text-sm text-gray-700">Origin: {{$dog->origin ? $dog->origin : 'Unknown'}}</h3>
+                                    <h3 class="mt-4 text-m text-gray-700">{{$dog->temperament}}</h3>
                                     <p class="mt-1 text-lg font-medium text-gray-900">{{$dog->name}}</p>
                                 </a>
                                 <a href="{{ url('edit/'.$dog->id) }}"><button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full">Edit</button></a>
-                                <a href="{{ url('confirm_delete/'.$dog->id) }}"><button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full">Delete</button></a>
+                                <a href="{{ url('confirm_delete/'.$dog->id) }}"><button class="bg-red-500 hover:bg-red-700 text-black font-bold py-2 px-4 rounded-full">Delete</button></a>
                             </div>
 
                             @endforeach
