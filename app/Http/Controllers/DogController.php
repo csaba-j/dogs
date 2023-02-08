@@ -93,7 +93,6 @@ class DogController extends Controller
             'name' => $request->get('name'),
             'origin' => $request->get('origin'),
             'rare' => $request->get('rare') == "on" ? 1 : 0,
-            'reference_image_name' => null,
             'rex' => $request->get('rex') == "on" ? 1 : 0,
             'short_legs' => $request->get('short_legs') == "on" ? 1 : 0,
             'suppressed_tail' => $request->get('suppressed_tail') == "on" ? 1 : 0,
@@ -104,8 +103,13 @@ class DogController extends Controller
 
         if($request->hasFile('image') && $request->file('image')->isValid()){
             $image = $request->file('image');
-            $path = Storage::putFileAs('public', $image, $dog->id.'.'.$image->getClientOriginalExtension());
-            $dog->reference_image_name = $dog->id.'.'.$image->getClientOriginalExtension();
+            $image_name = $dog->id . '.' . $image->getClientOriginalExtension();
+            $path = Storage::putFileAs('public', $image, $image_name);
+            $img_url = url(asset('storage/'.$image_name));
+            $dog->image = [
+                'url' => $img_url
+            ];
+            $dog->reference_image_name = $image_name; 
             $dog->save();
         }
 
@@ -184,23 +188,29 @@ class DogController extends Controller
                 'wikipedia_url' => $request->get('wikipedia_url'),
             ]);
 
-        if($request->hasFile('image') && $request->file('image')->isValid()){
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $image = $request->file('image');
+            $image_name = $dog->id . '.' . $image->getClientOriginalExtension();
             $exists = Storage::disk('public')->exists($dog->reference_image_name);
-            if($exists) {
+            if ($exists) {
                 Storage::disk('public')->delete($dog->reference_image_name);
             }
-            $path = Storage::putFileAs('public', $image, $dog->id.'.'.$image->getClientOriginalExtension());
-            Dog::where('id', $id)
-            ->update([
-                'reference_image_name' => $dog->id.'.'.$image->getClientOriginalExtension(),
-            ]);
+            $path = Storage::putFileAs('public', $image, $image_name);
+            $img_url = url(asset('storage/' .$image_name));
+            $dog = Dog::where('id', $id)
+                ->first();
+            $dog->image = [
+                'url' => $img_url
+            ];
+            $dog->reference_image_name = $image_name;
+            $dog->save();
+
+
+            Session::flash('message', "Successfully edited " . $dog->name . ".");
+
+            return redirect('dashboard');
+
         }
-
-        Session::flash('message', "Successfully edited ".$dog->name.".");
-
-        return redirect('dashboard');
-
     }
 
     public function confirmDelete(Request $request, $id) {

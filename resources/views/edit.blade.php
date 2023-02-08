@@ -27,15 +27,15 @@
                             </div>
                             <div class="input">
                                 <label for="experimental" class="block mb-2 text-sm font-medium text-gray-900">Experimental</label>
-                                <input type="checkbox" name="experimental" id="experimental" {{ $dog->experimental == 0 ?: 'checked' }}>
+                                <input type="checkbox" name="experimental" id="experimental" {{ !$dog->experimental ?: 'checked' }}>
                             </div>
                             <div class="input">
                                 <label for="hairless" class="block mb-2 text-sm font-medium text-gray-900">Hairless</label>
-                                <input type="checkbox" name="hairless" id="hairless" {{ $dog->hairless == 0 ?: 'checked' }}>
+                                <input type="checkbox" name="hairless" id="hairless" {{ !$dog->hairless ?: 'checked' }}>
                             </div>
                             <div class="input">
                                 <label for="hypoallergenic" class="block mb-2 text-sm font-medium text-gray-900">Hypoallergenic</label>
-                                <input type="checkbox" name="hypoallergenic" id="hypoallergenic" {{ $dog->hypoallergenic == 0 ?: 'checked' }}>
+                                <input type="checkbox" name="hypoallergenic" id="hypoallergenic" {{ !$dog->hypoallergenic ?: 'checked' }}>
                             </div>
                             <div class="input">
                                 <label for="life_span" class="block mb-2 text-sm font-medium text-gray-900" required>Lifespan (eg. 12-14)*</label>
@@ -43,7 +43,7 @@
                             </div>
                             <div class="input">
                                 <label for="natural" class="block mb-2 text-sm font-medium text-gray-900">Natural</label>
-                                <input type="checkbox" name="natural" id="natural" {{ $dog->natural == 0 ?: 'checked' }}>
+                                <input type="checkbox" name="natural" id="natural" {{ !$dog->natural ?: 'checked' }}>
                             </div>
                             <div class="input">
                                 <label for="origin" class="block mb-2 text-sm font-medium text-gray-900" required>Origin*</label>
@@ -51,19 +51,19 @@
                             </div>
                             <div class="input">
                                 <label for="rare" class="block mb-2 text-sm font-medium text-gray-900">Rare</label>
-                                <input type="checkbox" name="rare" id="rare" {{ $dog->rare == 0 ?: 'checked' }}>
+                                <input type="checkbox" name="rare" id="rare" {{ !$dog->rare ?: 'checked' }}>
                             </div>
                             <div class="input">
                                 <label for="rex" class="block mb-2 text-sm font-medium text-gray-900">Rex</label>
-                                <input type="checkbox" name="rex" id="rex" {{ $dog->rex == 0 ?: 'checked' }}>
+                                <input type="checkbox" name="rex" id="rex" {{ !$dog->rex ?: 'checked' }}>
                             </div>
                             <div class="input">
                                 <label for="short_legs" class="block mb-2 text-sm font-medium text-gray-900">Short legs</label>
-                                <input type="checkbox" name="short_legs" id="short_legs" {{ $dog->short_legs == 0 ?: 'checked' }}>
+                                <input type="checkbox" name="short_legs" id="short_legs" {{ !$dog->short_legs ?: 'checked' }}>
                             </div>
                             <div class="input">
                                 <label for="suppressed_tail" class="block mb-2 text-sm font-medium text-gray-900">Suppressed tail</label>
-                                <input type="checkbox" name="suppressed_tail" id="suppressed_tail" {{ $dog->suppressed_tail == 0 ?: 'checked' }}>
+                                <input type="checkbox" name="suppressed_tail" id="suppressed_tail" {{ !$dog->suppressed_tail ?: 'checked' }}>
                             </div>
                             <div class="input">
                                 <label for="temperament" class="block mb-2 text-sm font-medium text-gray-900" required>Temperament*</label>

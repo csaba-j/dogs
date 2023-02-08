@@ -28,6 +28,9 @@
 
             <!-- Page Content -->
             <main>
+            @if (Session::has('error'))
+                <div class="font-semibold text-xl text-gray-800 leading-tight">{{ Session::get('error') }}</div>
+            @endif
                 {{ $slot }}
             </main>
         </div>
