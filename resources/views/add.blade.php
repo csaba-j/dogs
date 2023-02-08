@@ -13,7 +13,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200" >
                     Fields marked with an asterisk (*) must be filled out.
-                    <form action="{{url('add-dog')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{secure_url('add-dog')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                         <div class="grid gap-6 mb-6 md:grid-cols-2">
                             <div class="input">

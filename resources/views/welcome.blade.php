@@ -25,9 +25,9 @@
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+                        <a href="{{ secure_url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                        <a href="{{ secure_route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
                      <!--   @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
@@ -54,7 +54,7 @@
                 <!--    Listing    -->
                 <div class="bg-white">
                     <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-                        <form method="get" action="{{url('search')}}">
+                        <form method="get" action="{{secure_url('search')}}">
                         @csrf
                         <div class="grid gap-6 mb-6 md:grid-cols-2">
                                 <div class="input">
