@@ -68,16 +68,20 @@
 
                         <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                             @foreach($dogs as $dog)
-                            <a href="{{$dog->wikipedia_url}}" class="group">
-                                <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+                            <div class="relative">
+                                <a href="{{$dog->wikipedia_url}}" class="group">
+                                    <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
                                         @if($dog->image['url'] != null)
                                             <img src="{{ $dog->image['url'] }}"alt="A cute dog." class="h-full w-full object-cover object-center group-hover:opacity-75">
                                         @else
                                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png"alt="A cute dog." class="h-full w-full object-cover object-center group-hover:opacity-75">
-                                        @endif                                </div>
-                                <h3 class="mt-4 text-sm text-gray-700">{{$dog->temperament}}</h3>
-                                <p class="mt-1 text-lg font-medium text-gray-900">{{$dog->name}}</p>
-                            </a>
+                                        @endif
+                                    </div>
+                                    <h3 class="mt-4 text-sm text-gray-700">Origin: {{$dog->origin ? $dog->origin : 'Unknown'}}</h3>
+                                    <h3 class="mt-4 text-m text-gray-700">{{$dog->temperament}}</h3>
+                                    <p class="mt-1 text-lg font-medium text-gray-900">{{$dog->name}}</p>
+                                </a>
+                            </div>
                             @endforeach
                         </div>
                         {{ $dogs->links() }}
