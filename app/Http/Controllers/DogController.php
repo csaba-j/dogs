@@ -113,7 +113,7 @@ class DogController extends Controller
             $dog->save();
         }
 
-        Session::flash('message', "Successfully added ".$dog->name." to database.".$img_url);
+        Session::flash('message', "Successfully added ".$dog->name." to database.");
 
         return redirect('add');
     }
