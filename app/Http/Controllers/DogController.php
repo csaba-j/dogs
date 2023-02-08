@@ -34,15 +34,9 @@ class DogController extends Controller
     }
 
     public function search(Request $request) {
-        $filter = $request->query('name');
+        $name = $request->query('name');
 
-        if (!empty($filter)) {
-            $dogs = Dog::where('name', 'like', '%'.$filter.'%')
-                ->paginate(10);
-        } else {
-            $dogs = Dog::paginate(10);
-        }
-
+        $dogs = Dog::name($name)->paginate(10);
         if (Auth::check()) {            
             return view('dashboard', [
                 'dogs' => $dogs
