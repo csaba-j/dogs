@@ -69,10 +69,8 @@ class populate extends Command
                 $this->error('All the dogs from the API are already imported!');
                 return 1;
             }
-                $data[$id];
                 $dog = new Dog;
                 $dog->fill($data[$id]);
-                $dog->reference_image_url = $data[$id]['image']['url'] ? $data[$id]['image']['url'] : null;
                 $dog->save();
             $this->info('Imported: ' . $data[$id]['name']);
         }

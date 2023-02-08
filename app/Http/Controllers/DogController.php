@@ -93,7 +93,6 @@ class DogController extends Controller
             'name' => $request->get('name'),
             'origin' => $request->get('origin'),
             'rare' => $request->get('rare') == "on" ? 1 : 0,
-            'reference_image_name' => null,
             'rex' => $request->get('rex') == "on" ? 1 : 0,
             'short_legs' => $request->get('short_legs') == "on" ? 1 : 0,
             'suppressed_tail' => $request->get('suppressed_tail') == "on" ? 1 : 0,

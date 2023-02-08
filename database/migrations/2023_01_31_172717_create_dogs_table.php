@@ -24,9 +24,9 @@ class CreateDogsTable extends Migration
             $table->boolean('natural')->default(0);
             $table->string('origin')->default('');
             $table->boolean('rare')->default(0);
-            $table->string('reference_image_name')->nullable();
+            $table->string('image')->nullable();
             $table->string('reference_image_id')->nullable();
-            $table->string('reference_image_url')->nullable();
+            $table->string('reference_image_name')->nullable();
             $table->boolean('rex')->default(0);
             $table->boolean('short_legs')->default(0);
             $table->boolean('suppressed_tail')->default(0);

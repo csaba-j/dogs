@@ -19,9 +19,8 @@ class Dog extends Model
         'name',
         'origin',
         'rare',
+        'image',
         'reference_image_id',
-        'reference_image_name',
-        'reference_image_url',
         'rex',
         'short_legs',
         'suppressed_tail',
@@ -44,5 +43,7 @@ class Dog extends Model
         'rex' => 'boolean',
         'short_legs' => 'boolean',
         'suppressed_tail' => 'boolean',
+        'is_admin' => 'boolean',
+        'image' => 'array'
     ];
 }
