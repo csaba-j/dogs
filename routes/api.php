@@ -20,3 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/dogs', [DogApiController::class, 'index'])->middleware('auth:sanctum');
+
+Route::get('/dogs/search', [DogApiController::class, 'search'])->middleware('auth:sanctum');

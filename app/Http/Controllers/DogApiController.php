@@ -22,6 +22,15 @@ class DogApiController extends Controller
         return $dogs;
     }
 
+    public function search(Request $request) {
+        $page_size = $request->query('q') ? $request->query('page_size') : 10;
+        $dogs = Dog::name($request->query('name'))->paginate($page_size);
+        foreach($dogs as $dog) {
+            json_encode($dog->image);
+        }
+        return $dogs;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
