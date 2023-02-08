@@ -14,7 +14,11 @@ class DogApiController extends Controller
      */
     public function index()
     {
-        return Dog::all();
+        $dogs = Dog::paginate(10);
+        foreach($dogs as $dog) {
+            json_encode($dog->image);
+        }
+        return $dogs;
     }
 
     /**
