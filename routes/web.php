@@ -42,3 +42,7 @@ Route::post('tokens/create', [UserController::class, 'createApiToken'])->middlew
 
 
 require __DIR__.'/auth.php';
+
+if (App::environment('production')) {  
+    URL::forceScheme('https');  
+} 
