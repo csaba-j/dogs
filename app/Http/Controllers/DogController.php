@@ -196,10 +196,9 @@ class DogController extends Controller
 
 
             Session::flash('message', "Successfully edited " . $dog->name . ".");
-
-            return redirect('dashboard');
-
         }
+
+        return redirect('dashboard');
     }
 
     public function confirmDelete(Request $request, $id) {
