@@ -22,7 +22,7 @@
                                 <input type="text" name="name" id="name" value="{{ old('name') == '' ? $dog->name : old('name') }}">
                             </div>
                             <div class="input">
-                                <label for="alt_names" class="block mb-2 text-sm font-medium text-gray-900">Alternative names (optional)</label>
+                                <label for="alt_names" class="block mb-2 text-sm font-medium text-gray-900">Alternative names</label>
                                 <input type="text" name="alt_names" id="alt_names" value="{{ old('alt_names') == '' ? $dog->name : old('alt_names') }}">
                             </div>
                             <div class="input">
@@ -38,7 +38,7 @@
                                 <input type="checkbox" name="hypoallergenic" id="hypoallergenic" {{ !$dog->hypoallergenic ?: 'checked' }}>
                             </div>
                             <div class="input">
-                                <label for="life_span" class="block mb-2 text-sm font-medium text-gray-900" required>Lifespan (eg. 12-14)*</label>
+                                <label for="life_span" class="block mb-2 text-sm font-medium text-gray-900" required>Lifespan (eg. 12-14 years)</label>
                                 <input type="text" name="life_span" id="life_span" value="{{ old('life_span') == '' ? $dog->life_span : old('life_span') }}">
                             </div>
                             <div class="input">
@@ -46,7 +46,7 @@
                                 <input type="checkbox" name="natural" id="natural" {{ !$dog->natural ?: 'checked' }}>
                             </div>
                             <div class="input">
-                                <label for="origin" class="block mb-2 text-sm font-medium text-gray-900" required>Origin*</label>
+                                <label for="origin" class="block mb-2 text-sm font-medium text-gray-900" required>Origin</label>
                                 <input type="text" name="origin" id="origin" value="{{ old('origin') == '' ? $dog->origin : old('origin') }}">
                             </div>
                             <div class="input">
@@ -66,15 +66,15 @@
                                 <input type="checkbox" name="suppressed_tail" id="suppressed_tail" {{ !$dog->suppressed_tail ?: 'checked' }}>
                             </div>
                             <div class="input">
-                                <label for="temperament" class="block mb-2 text-sm font-medium text-gray-900" required>Temperament*</label>
+                                <label for="temperament" class="block mb-2 text-sm font-medium text-gray-900" required>Temperament</label>
                                 <input type="text" name="temperament" id="temperament" value="{{ old('temperament') == '' ? $dog->temperament : old('temperament') }}">
                             </div>
                             <div class="input">
-                                <label for="weight_imperial" class="block mb-2 text-sm font-medium text-gray-900" required>Weight (eg. 12-14)*</label>
+                                <label for="weight_imperial" class="block mb-2 text-sm font-medium text-gray-900" required>Weight (eg. 12-14 lbs)</label>
                                 <input type="text" name="weight_imperial" id="weight_imperial" value="{{ old('weight_imperial') == '' ? $dog->weight_imperial : old('weight_imperial') }}">
                             </div>
                             <div class="input">
-                                <label for="wikipedia_url" class="block mb-2 text-sm font-medium text-gray-900" required>Wikipedia URL*</label>
+                                <label for="wikipedia_url" class="block mb-2 text-sm font-medium text-gray-900" required>Wikipedia URL</label>
                                 <input type="text" name="wikipedia_url" id="wikipedia_url" value="{{ old('wikipedia_url') == '' ? $dog->wikipedia_url : old('wikipedia_url') }}">
                             </div>
                             <div class="input">

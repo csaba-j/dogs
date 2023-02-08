@@ -67,12 +67,7 @@ class DogController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'life_span' => 'required',
             'name' => 'required|unique:dogs',
-            'origin' => 'required',
-            'temperament' => 'required',
-            'weight_imperial' => 'required',
-            'wikipedia_url' => 'required',
             'image' => 'mimes:jpg,bmp,png,jpeg|max:3500'
         ]);
 
