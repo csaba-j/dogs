@@ -19,7 +19,7 @@
                 <!--    Listing    -->
                 <div class="bg-white">
                     <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-                        <form method="get" action="{{secure_url('dashboard/search')}}">
+                        <form method="get" action="{{url('dashboard/search')}}">
                         @csrf
                             <div class="grid gap-6 mb-6 md:grid-cols-2">
                                     <div class="input">
@@ -45,8 +45,8 @@
                                     <h3 class="mt-4 text-m text-gray-700">{{$dog->temperament}}</h3>
                                     <p class="mt-1 text-lg font-medium text-gray-900">{{$dog->name}}</p>
                                 </a>
-                                <a href="{{ secure_url('edit/'.$dog->id) }}"><button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full">Edit</button></a>
-                                <a href="{{ secure_url('confirm_delete/'.$dog->id) }}"><button class="bg-red-500 hover:bg-red-700 text-black font-bold py-2 px-4 rounded-full">Delete</button></a>
+                                <a href="{{ url('edit/'.$dog->id) }}"><button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full">Edit</button></a>
+                                <a href="{{ url('confirm_delete/'.$dog->id) }}"><button class="bg-red-500 hover:bg-red-700 text-black font-bold py-2 px-4 rounded-full">Delete</button></a>
                             </div>
 
                             @endforeach

@@ -14,7 +14,7 @@
                     <a href="{{ url()->previous() }}"><button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full">Back</button></a>
                     <br>
                     Fields marked with an asterisk (*) must be filled out.
-                    <form action="{{secure_url('update/'.$dog->id)}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{url('update/'.$dog->id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
                         <div class="grid gap-6 mb-6 md:grid-cols-2">
                             <div class="input">
