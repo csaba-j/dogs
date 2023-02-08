@@ -12,9 +12,10 @@ class DogApiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $dogs = Dog::paginate(10);
+        $page_size = $request->query('page_size') ? $request->query('page_size') : 10;
+        $dogs = Dog::paginate($page_size);
         foreach($dogs as $dog) {
             json_encode($dog->image);
         }
