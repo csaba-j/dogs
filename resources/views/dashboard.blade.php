@@ -14,6 +14,8 @@
                             Dogs in database:
             </h2>  
 
+            @if (count($dogs) > 0)
+
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 
                 <!--    Listing    -->
@@ -59,6 +61,9 @@
                 </div>
                 <!--  End listing  -->
             </div>
+            @else
+            <h1>There are no dogs in the database.</h1>
+            @endif
         </div>
     </div>
 </x-app-layout>

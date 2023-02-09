@@ -49,6 +49,8 @@
                             Dogs in database:
             </h2>  
 
+            @if (count($dogs) > 0)
+
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 
                 <!--    Listing    -->
@@ -64,8 +66,6 @@
                                     <button>Click to filter</button>
                         </div>
                         </form>
-
-
                         <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                             @foreach($dogs as $dog)
                             <div class="relative">
@@ -91,6 +91,9 @@
                 </div>
                 <!--  End listing  -->
             </div>
+            @else
+            <h1>There are no dogs in the database.</h1>
+            @endif
         </div>
     </div>
 </x-guest-layout>

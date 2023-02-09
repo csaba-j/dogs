@@ -8,8 +8,8 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         Are you sure you want to delete the dog {{ $dog->name }} ?
 
-        <button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full"><a href="{{ url('delete/'.$dog->id) }}">Delete</a></button>
-        <button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full"><a href="{{ url('dashboard') }}">Cancel</a></button>
+        <a href="{{ url('delete/'.$dog->id) }}"><button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full">Delete</button></a>
+        <a href="{{ url('dashboard') }}"><button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full">Cancel</button></a>
 
     </div>
 
