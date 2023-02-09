@@ -42,28 +42,32 @@
         </h2>
     </x-slot>
 
+    <div>
+        <h1 class="mb-4 mt-8 text-4xl font-extrabold text-center leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Dog website</h1>
+    </div>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                            Dogs in database:
-            </h2>  
-
+                @if (Session::has('message'))
+                    <div class="font-semibold text-xl text-gray-800 leading-tight mb-5">{{ Session::get('message') }}</div>
+                @endif
             @if (count($dogs) > 0)
 
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight m-5">
+                            Dogs in database:
+            </h2>  
                 <!--    Listing    -->
                 <div class="bg-white">
-                    <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+                    <div class="mx-auto max-w-2xl py-6 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
                         <form method="get" action="{{url('search')}}">
                         @csrf
-                        <div class="grid gap-6 mb-6 md:grid-cols-2">
+                        <div class="grid gap-80 mb-6 md:grid-cols-2 border-b-4 border-gray-400 pb-6">
                                 <div class="input">
                                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Name*</label>
                                     <input type="text" name="name" id="name" value="{{ old('name') }}">
                                 </div>
-                                    <button>Click to filter</button>
+                                    <button class="border-solid border-2 border-indigo-600 bg-indigo-200 hover:bg-indigo-600 text-black font-bold py-2 px-4 mx-20 rounded-full">Click to filter</button>
                         </div>
                         </form>
                         <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">

@@ -11,7 +11,7 @@
         @endif
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200" >
-                    <a href="{{ url()->previous() }}"><button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full">Back</button></a>
+                    <a href="{{ url()->previous() }}"><button class="border-solid border-2 border-indigo-600 bg-indigo-200 hover:bg-indigo-600 text-black font-bold py-2 px-4 rounded-full">Back</button></a>
                     <br>
                     Fields marked with an asterisk (*) must be filled out.
                     <form action="{{url('update/'.$dog->id)}}" method="POST" enctype="multipart/form-data">

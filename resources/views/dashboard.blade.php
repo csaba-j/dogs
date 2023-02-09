@@ -8,27 +8,25 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         @if (Session::has('message'))
-            <div class="font-semibold text-xl text-gray-800 leading-tight">{{ Session::get('message') }}</div>
+            <div class="font-semibold text-xl text-gray-800 leading-tight mb-5">{{ Session::get('message') }}</div>
         @endif
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                            Dogs in database:
-            </h2>  
-
             @if (count($dogs) > 0)
 
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight m-5">
+                            Dogs in database:
+            </h2>  
                 <!--    Listing    -->
                 <div class="bg-white">
-                    <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+                    <div class="mx-auto max-w-2xl py-6 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
                         <form method="get" action="{{url('dashboard/search')}}">
                         @csrf
-                            <div class="grid gap-6 mb-6 md:grid-cols-2">
+                            <div class="grid gap-80 mb-6 md:grid-cols-2 border-b-4 border-gray-400 pb-6">
                                     <div class="input">
                                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Name*</label>
                                         <input type="text" name="name" id="name" value="{{ old('name') }}">
                                     </div>
-                                        <button>Click to filter</button>
+                                    <button class="border-solid border-2 border-indigo-600 bg-indigo-200 hover:bg-indigo-600 text-black font-bold py-2 px-4 mx-20 rounded-full">Click to filter</button>
                             </div>
                         </form>
 
@@ -47,8 +45,8 @@
                                     <h3 class="mt-4 text-m text-gray-700">{{$dog->temperament}}</h3>
                                     <p class="mt-1 text-lg font-medium text-gray-900">{{$dog->name}}</p>
                                 </a>
-                                <a href="{{ url('edit/'.$dog->id) }}"><button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full">Edit</button></a>
-                                <a href="{{ url('confirm_delete/'.$dog->id) }}"><button class="bg-red-500 hover:bg-red-700 text-black font-bold py-2 px-4 rounded-full">Delete</button></a>
+                                <a href="{{ url('edit/'.$dog->id) }}"><button class="border-solid border-2 border-indigo-600 bg-indigo-200 hover:bg-indigo-600 text-black font-bold py-2 px-4 rounded-full">Edit</button></a>
+                                <a href="{{ url('confirm_delete/'.$dog->id) }}"><button class="border-solid border-2 border-red-600 bg-red-100 hover:bg-red-600 text-black font-bold py-2 px-4 rounded-full">Delete</button></a>
                             </div>
 
                             @endforeach
